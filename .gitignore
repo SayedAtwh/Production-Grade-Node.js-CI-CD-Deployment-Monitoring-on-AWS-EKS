@@ -1,0 +1,74 @@
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Build folders
+dist/
+build/
+coverage/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Dependency directories
+jspm_packages/
+
+# Temporary files
+tmp/
+temp/
+
+# Docker
+docker-compose.override.yml
+
+# Kubernetes secrets/configs
+*.secret.yaml
+secrets.yaml
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+override.tf
+override.tf.json
+terraform.tfvars
+*.tfvars
+
+# AWS
+.aws/
+
+# Helm
+charts/*.tgz
+
+# Kubernetes generated files
+kubeconfig.yaml
+
+# CI/CD artifacts
+artifacts/
+reports/
+
+# Cache
+.cache/
+npm-cache/
+
+# Test reports
+junit.xml
+
+# Mac/Linux hidden files
+.*.swp
