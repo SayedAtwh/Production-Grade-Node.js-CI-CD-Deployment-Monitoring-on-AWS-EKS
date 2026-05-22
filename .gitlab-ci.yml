@@ -1,8 +1,9 @@
 stages:
   - build-psuh-dockerhub
-
+  - build-push-gitlab-registry
 variables:
-  IMAGE_NAME: $DOCKER_USERNAME/masar-app:$CI_PIPELINE_IID
+  IMAGE_NAME_DOCKERHUB: $DOCKER_USERNAME/masar-app:$CI_PIPELINE_IID
+  IMAGE_NAME_GITLAB_REGISTRY:  registry.gitlab.com/$CI_PROJECT_PATH/masar-app:$CI_PIPELINE_IID
 
 
 build-push-dockerhub:
@@ -11,7 +12,18 @@ build-push-dockerhub:
   services:
     - docker:24.0-dind
   before_script:
-    - docker build -t $IMAGE_NAME .
+    - docker build -t $IMAGE_NAME_DOCKERHUB .
   script:
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-    - docker push $IMAGE_NAME 
+    - docker push $IMAGE_NAME_DOCKERHUB 
+
+build-push-gitlab-registry:
+  stage: build-push-gitlab-registry
+  image: docker:24.0
+  services:
+    - docker:24.0-dind
+  before_script:
+    - docker build -t $IMAGE_NAME_GITLAB_REGISTRY .
+  script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
+    - docker push $IMAGE_NAME_GITLAB_REGISTRY
