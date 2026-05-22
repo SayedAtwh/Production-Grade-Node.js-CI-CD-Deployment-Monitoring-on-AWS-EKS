@@ -11,7 +11,7 @@ build-push-dockerhub:
   services:
     - docker:24.0-dind
   after_script:
-    - docker build -t $DOCKERHUB_USERNAME/masar-app:$CI_PIPELINE_IID .
+    - docker build -t $IMAGE_NAME .
   script:
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-    - docker push $DOCKERHUB_USERNAME/masar-app:$CI_PIPELINE_IID
+    - docker push $IMAGE_NAME
