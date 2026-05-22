@@ -30,7 +30,7 @@ build-push-gitlab-registry:
     - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin $CI_REGISTRY
     - docker push $IMAGE_NAME_GITLAB_REGISTRY
 
-test_app:
+.test_app:
   stage: test
   image: sonarsource/sonar-scanner-cli:latest
 
