@@ -10,7 +10,7 @@ build-push-dockerhub:
   image: docker:24.0
   services:
     - docker:24.0-dind
-  after_script:
+  before_script:
     - docker build -t $IMAGE_NAME .
   script:
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
