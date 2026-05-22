@@ -1,0 +1,17 @@
+stages:
+  - build-psuh-dockerhub
+
+variables:
+  IMAGE_NAME: $DOCKER_USERNAME/masar-app:$CI_PIPELINE_IID
+
+
+build-push-dockerhub:
+  stage: build-psuh-dockerhub
+  image: docker:24.0
+  services:
+    - docker:24.0-dind
+  after_script:
+    - docker build -t $DOCKERHUB_USERNAME/masar-app:$CI_PIPELINE_IID .
+  script:
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    - docker push $DOCKERHUB_USERNAME/masar-app:$CI_PIPELINE_IID
