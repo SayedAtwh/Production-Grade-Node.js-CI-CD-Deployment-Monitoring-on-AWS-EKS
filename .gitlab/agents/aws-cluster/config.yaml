@@ -1,0 +1,3 @@
+ci-access:
+  projects:
+    - id: project-group5482417/production-grade-node.js-ci-cd-deployment-monitoring-on-aws-eks
