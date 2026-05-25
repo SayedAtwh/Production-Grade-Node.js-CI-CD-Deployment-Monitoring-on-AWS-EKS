@@ -24,7 +24,7 @@ spec:
         - name: masar-app
           image: IMAGE_PLACEHOLDER
           ports:
-            - containerPort: 5173
+            - containerPort: 80
           env:
             - name: IMAGE_NAME_GITLAB_REGISTRY
               value: IMAGE_PLACEHOLDER
