@@ -82,7 +82,7 @@ function Home({ selectedCountry, searchTerm, setSearchTerm, activeCategory, setA
         <div className="hero-overlay"></div>
         <div className="container hero-content animate-fade">
           <h1>منصة مسار للوظائف</h1>
-          <p>اكتشف أفضل الفرص الوظيفية في 10 دول عربية</p>
+          <p>اكتشف أفضل الفرص الوظيفية في 8 دول عربية</p>
 
           <div className="search-box glass-card animate-fade" style={{ animationDelay: '0.1s' }}>
             <div className="search-input">
