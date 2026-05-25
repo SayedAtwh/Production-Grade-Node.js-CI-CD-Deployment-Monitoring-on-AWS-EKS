@@ -2,6 +2,7 @@ stages:
   - build-psuh-dockerhub
   - build-push-gitlab-registry
   - test
+  - deploy
 variables:
   IMAGE_NAME_DOCKERHUB: $DOCKER_USERNAME/masar-app:$CI_PIPELINE_IID
   IMAGE_NAME_GITLAB_REGISTRY:  registry.gitlab.com/$CI_PROJECT_PATH/masar-app:$CI_PIPELINE_IID
@@ -58,3 +59,13 @@ test_app:
   only:
     - main
 
+deploy_job:
+  stage: deploy
+  image:
+    name: bitnami/kubectl:latest
+    entrypoint: [""]
+  script:
+    - sed -i "s|IMAGE_PLACEHOLDER|$IMAGE_NAME_GITLAB_REGISTRY|g" deployment.yaml
+    - kubectl config use-context "$KUBE_CONTEXT"
+    - kubectl apply -f deployment.yaml
+    - kubectl apply -f service.yaml
