@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: masar-app-deployment
+  labels:
+    app: masar-app
+    environment: production
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: masar-app
+      environment: production
+  template:
+    metadata:
+      labels:
+        app: masar-app
+        environment: production
+    spec:
+      imagePullSecrets:
+        - name: gitlab-registry-secret
+      containers:
+        - name: masar-app
+          image: IMAGE_PLACEHOLDER
+          ports:
+            - containerPort: 5173
+          env:
+            - name: IMAGE_NAME_GITLAB_REGISTRY
+              value: IMAGE_PLACEHOLDER
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
