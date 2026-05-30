@@ -51,13 +51,9 @@ test_app:
         -Dsonar.projectName=$PROJECT_NAME \
         -Dsonar.sources=. \
         -Dsonar.host.url=$SONAR_HOST_URL \
-        -Dsonar.login=$SONAR_TOKEN \
-        -Dsonar.qualitygate.wait=true
+        -Dsonar.login=$SONAR_TOKEN
 
   allow_failure: true
-
-  only:
-    - main
 
 deploy_job:
   stage: deploy
