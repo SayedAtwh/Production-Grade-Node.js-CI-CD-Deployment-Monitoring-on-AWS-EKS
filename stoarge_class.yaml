@@ -10,4 +10,4 @@ parameters:
   directoryPerms: "700"
   fileSystemId: fs-07d716208c19febdb
 reclaimPolicy: Retain 
-volumeBindingMode: Immediate
+volumeBindingMode: Immediate 
