@@ -40,5 +40,5 @@ spec:
               mountPath: /app/data
       volumes:
         - name: masar-app-storage
-          persistentVolumeClaim:
+          persistentVolumeClaim: 
             claimName: efs-pvc-nodejs-app 
