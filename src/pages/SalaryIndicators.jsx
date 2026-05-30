@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { TrendingUp, MapPin, DollarSign, Briefcase, Info, ArrowUpRight, ArrowDownRight, Target, Users, Award, X, CheckSquare } from 'lucide-react';
+import { TrendingUp, MapPin, DollarSign, Briefcase, Info, ArrowUpRight, Target, Users, Award, X, CheckSquare } from 'lucide-react';
 
 const SalaryRangeBar = ({ min, max, avg, currency }) => {
   const percentage = ((avg - min) / (max - min)) * 100;

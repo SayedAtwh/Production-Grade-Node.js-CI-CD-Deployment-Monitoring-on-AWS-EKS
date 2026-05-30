@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { useAuth } from '../context/AuthContext';
 import { useLanguage } from '../context/LanguageContext';
-import { Briefcase, Users, CheckCircle, XCircle, Clock, ExternalLink, ChevronRight, Trash2, Globe, MapPin, TrendingUp, Eye } from 'lucide-react';
+import { Briefcase, Users, CheckCircle, XCircle, ChevronRight, Trash2, Globe, MapPin, TrendingUp, Eye } from 'lucide-react';
 import '../App.css';
 
 export default function EmployerDashboard({ jobsData, handleDeleteJob, currentUser, isAdmin }) {
   const { user } = useAuth();
-  const { t, language } = useLanguage();
   const [selectedCountry, setSelectedCountry] = useState('الكل');
   const [activeTab, setActiveTab] = useState('overview'); // 'overview', 'jobs', 'applicants'
 
@@ -14,8 +13,8 @@ export default function EmployerDashboard({ jobsData, handleDeleteJob, currentUs
   const allCountries = ['الكل', ...new Set(jobsData.map(job => job.location))];
 
   // Filter jobs by selected country
-  const filteredJobs = selectedCountry === 'الكل' 
-    ? jobsData 
+  const filteredJobs = selectedCountry === 'الكل'
+    ? jobsData
     : jobsData.filter(job => job.location === selectedCountry);
 
   // Group jobs by country for overview
@@ -139,7 +138,7 @@ export default function EmployerDashboard({ jobsData, handleDeleteJob, currentUs
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
           {jobsByCountry.map(country => (
             <div key={country.name} className="glass-card" style={{ padding: '2rem', borderRadius: '20px', transition: 'var(--transition)', cursor: 'pointer' }}
-                 onClick={() => { setSelectedCountry(country.name); setActiveTab('jobs'); }} >
+              onClick={() => { setSelectedCountry(country.name); setActiveTab('jobs'); }} >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
                 <h3 style={{ margin: 0, fontSize: '1.5rem', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   <Globe size={24} color="var(--primary)" />

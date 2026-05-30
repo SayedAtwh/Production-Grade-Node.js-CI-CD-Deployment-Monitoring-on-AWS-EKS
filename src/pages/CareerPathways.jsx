@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
-import { Rocket, Target, BookOpen, ChevronRight, CheckCircle, Smartphone, Palette, ShieldCheck, Megaphone, Laptop, Code } from 'lucide-react';
+import { ChevronRight, Smartphone, Palette, ShieldCheck, Megaphone, Laptop, Code } from 'lucide-react';
 
 const paths = [
   {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Briefcase, Users, FileText, Settings, Globe, Brain, Home, Menu, Search, Building, CheckCircle } from 'lucide-react';
+import { FileText, Globe, Brain, Home, Search, Building } from 'lucide-react';
 
 function MobileLanding() {
   const menuItems = [
@@ -102,9 +102,9 @@ function MobileLanding() {
         width: '100%',
         maxWidth: '400px'
       }}>
-        {menuItems.map((item, index) => (
+        {menuItems.map((item) => (
           <Link
-            key={index}
+            key={item.link}
             to={item.link}
             style={{
               textDecoration: 'none',

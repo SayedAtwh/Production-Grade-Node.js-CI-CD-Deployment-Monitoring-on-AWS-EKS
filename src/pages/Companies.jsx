@@ -116,8 +116,8 @@ function Companies({ selectedCountry, jobsData }) {
               gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
               gap: '2rem'
             }}>
-              {currentCompanies.map((company, index) => (
-                <div key={index} className="job-card animate-fade" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+              {currentCompanies.map((company) => (
+                <div key={company.name} className="job-card animate-fade" style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
                   <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginBottom: '1.5rem' }}>
                     <div style={{
                       width: '60px', height: '60px', borderRadius: '12px', backgroundColor: 'var(--accent)',
@@ -136,8 +136,8 @@ function Companies({ selectedCountry, jobsData }) {
                   </div>
 
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.5rem', flex: 1 }}>
-                    {company.categories.slice(0, 3).map((cat, i) => (
-                      <span key={i} style={{
+                    {company.categories.slice(0, 3).map((cat) => (
+                      <span key={`cat-${cat}`} style={{
                         background: '#f1f5f9', color: 'var(--text-muted)',
                         padding: '0.3rem 0.8rem', borderRadius: '50px', fontSize: '0.8rem', fontWeight: '600'
                       }}>
@@ -190,7 +190,7 @@ function Companies({ selectedCountry, jobsData }) {
 
                 {[...Array(totalPages)].map((_, i) => (
                   <button
-                    key={i}
+                    key={`page-${i + 1}`}
                     onClick={() => paginate(i + 1)}
                     style={{
                       width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center',

@@ -244,7 +244,7 @@ body {
     left: auto !important;
     transform: translateX(100.1%) !important;
   }
-  
+
   [dir="ltr"] .nav {
     left: 0 !important;
     right: auto !important;
@@ -471,9 +471,6 @@ body {
 }
 
 /* Notifications & Badge */
-.icon-btn {
-  position: relative;
-}
 
 .icon-btn .badge {
   position: absolute;
@@ -806,7 +803,6 @@ body {
 
 /* Advanced Filters */
 .advanced-filters {
-  margin-top: 2rem;
   padding: 1.5rem;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 15px;

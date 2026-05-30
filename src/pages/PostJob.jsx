@@ -7,11 +7,8 @@ import { getCurrentDateTime } from '../utils/timeUtils';
 
 export default function PostJob({ handleAddJob, handleDeleteJob }) {
   const { user } = useAuth();
-  const { t, language } = useLanguage();
   const navigate = useNavigate();
-  
-  console.log('PostJob component loaded, user:', user);
-  
+
   const [formData, setFormData] = useState({
     title: '',
     company: '',
@@ -26,7 +23,6 @@ export default function PostJob({ handleAddJob, handleDeleteJob }) {
     benefits: '',
     applyUrl: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
   // Redirect to login if not logged in
@@ -81,7 +77,7 @@ export default function PostJob({ handleAddJob, handleDeleteJob }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     if (!user) {
       alert('يجب تسجيل الدخول أولاً');
       return;

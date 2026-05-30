@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useState, useContext, useEffect, useMemo } from 'react';
 
 const BookmarkContext = createContext();
 
@@ -48,7 +48,7 @@ export function BookmarkProvider({ children }) {
   };
 
   return (
-    <BookmarkContext.Provider value={{ bookmarks, toggleBookmark, isBookmarked, removeBookmark, isLoading }}>
+    <BookmarkContext.Provider value={useMemo(() => ({ bookmarks, toggleBookmark, isBookmarked, removeBookmark, isLoading }), [bookmarks, isLoading])}>
       {children}
     </BookmarkContext.Provider>
   );

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { MapPin, Building2, Calendar, Clock, DollarSign, ChevronRight, Briefcase, Share2, ExternalLink, FileText, CheckCircle, AlertTriangle, Rocket } from 'lucide-react';
+import { MapPin, Building2, Clock, ChevronRight, Briefcase, Share2, ExternalLink, FileText, CheckCircle } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import { useAuth } from '../context/AuthContext';
 import { formatTimeAgo } from '../utils/timeUtils';
@@ -112,7 +112,7 @@ function JobDetails({ jobsData }) {
               </h3>
               <ul style={{ paddingRight: '1.5rem', lineHeight: '1.8', color: 'var(--text-muted)', fontSize: '1.05rem' }}>
                 {requirements.map((req, idx) => (
-                  <li key={idx} style={{ marginBottom: '0.5rem' }}>{req}</li>
+                  <li key={`req-${idx}-${req.substring(0, 10)}`} style={{ marginBottom: '0.5rem' }}>{req}</li>
                 ))}
               </ul>
             </div>
@@ -145,14 +145,14 @@ function JobDetails({ jobsData }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="apply-link-btn"
-                  style={{ 
-                    width: '100%', 
-                    padding: '1rem', 
-                    borderRadius: '50px', 
-                    background: 'var(--primary)', 
-                    color: 'white', 
-                    fontWeight: 'bold', 
-                    fontSize: '1.1rem', 
+                  style={{
+                    width: '100%',
+                    padding: '1rem',
+                    borderRadius: '50px',
+                    background: 'var(--primary)',
+                    color: 'white',
+                    fontWeight: 'bold',
+                    fontSize: '1.1rem',
                     cursor: 'pointer',
                     textDecoration: 'none',
                     display: 'flex',

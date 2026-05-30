@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, User, Clock, ChevronLeft, Newspaper, TrendingUp, Lightbulb, Target } from 'lucide-react';
+import { Calendar, Clock, ChevronLeft, Newspaper, TrendingUp, Lightbulb, Target } from 'lucide-react';
 
 function Blog() {
   const articles = [

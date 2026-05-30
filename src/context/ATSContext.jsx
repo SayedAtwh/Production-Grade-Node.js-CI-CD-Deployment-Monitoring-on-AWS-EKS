@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext, useMemo } from 'react';
 
 const ATSContext = createContext();
 
@@ -204,7 +204,7 @@ export function ATSProvider({ children }) {
 
     return {
       score: Math.max(0, Math.min(100, score)),
-      feedback: score >= 70 ? 'الكلمات المفتاحية ممتازة' : score >= 50 ? 'أضف المزيد من الكلمات المفتاحية' : 'السيرة تحتاج الكثير من الكلمات المفتاحية',
+      feedback: getKeywordsFeedback(score),
       foundKeywords,
       foundTechnical,
       missing: ATS_CRITERIA.keywords.important.filter(k => !foundKeywords.includes(k)).slice(0, 5)
@@ -225,7 +225,7 @@ export function ATSProvider({ children }) {
     }
 
     // البحث عن رقم الهاتف (صيغ مختلفة)
-    const phoneRegex = /(\+?[0-9]{1,3}[-.\s]?)?(\(?[0-9]{2,4}\)?[-.\s]?)?[0-9]{3,4}[-.\s]?[0-9]{3,4}/g;
+    const phoneRegex = createPhoneRegex();
     if (phoneRegex.test(text)) {
       foundContact.push('رقم الهاتف');
       contactScore += 20;
@@ -241,7 +241,7 @@ export function ATSProvider({ children }) {
 
     return {
       score: Math.min(100, contactScore),
-      feedback: contactScore >= 40 ? 'بيانات التواصل كاملة وواضحة' : 'أضف المزيد من وسائل التواصل (بريد + هاتف على الأقل)',
+      feedback: getContactFeedback(contactScore),
       foundContact
     };
   };
@@ -275,7 +275,7 @@ export function ATSProvider({ children }) {
 
     return {
       score: Math.min(100, Math.round(structureScore)),
-      feedback: foundSections.length >= 5 ? 'البنية منظمة بشكل ممتاز' : foundSections.length >= 4 ? 'البنية منظمة بشكل جيد' : 'يحتاج تنظيم أفضل',
+      feedback: getStructureFeedback(foundSections.length),
       foundSections,
       missingSections: sectionsToCheck.filter(s => !foundSections.includes(s.name)).map(s => s.name)
     };
@@ -402,7 +402,7 @@ export function ATSProvider({ children }) {
   };
 
   return (
-    <ATSContext.Provider value={{ atsResult, analyzeCV }}>
+    <ATSContext.Provider value={useMemo(() => ({ atsResult, analyzeCV }), [atsResult])}>
       {children}
     </ATSContext.Provider>
   );

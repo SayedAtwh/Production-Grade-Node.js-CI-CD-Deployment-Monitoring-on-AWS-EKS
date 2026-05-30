@@ -47,7 +47,7 @@ function EmailNotification() {
         <div className="email-body">
           <div className="email-content">
             {emailNotification.content.split('\n').map((line, idx) => (
-              <p key={idx} className={line.match(/^[🔗✓━━━━━━━━━━]/) ? 'special-line' : ''}>
+              <p key={`line-${idx}-${line.substring(0, 10)}`} className={line.match(/^[🔗✓━━━━━━━━━━]/u) ? 'special-line' : ''}>
                 {line}
               </p>
             ))}

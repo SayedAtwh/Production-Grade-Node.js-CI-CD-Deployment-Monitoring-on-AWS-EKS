@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, CheckCircle, Users, Target, Brain, Globe, Briefcase, Star } from 'lucide-react';
+import { ArrowRight, Brain } from 'lucide-react';
 
 function AboutMasar() {
   return (
-    <div style={{ 
-      minHeight: '100vh', 
+    <div style={{
+      minHeight: '100vh',
       background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
       paddingTop: '80px'
     }}>
@@ -19,23 +19,23 @@ function AboutMasar() {
           boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)',
           marginBottom: '3rem'
         }}>
-          <h1 style={{ 
-            fontSize: '3rem', 
-            marginBottom: '1.5rem', 
+          <h1 style={{
+            fontSize: '3rem',
+            marginBottom: '1.5rem',
             color: '#1e293b',
             fontWeight: 'bold'
           }}>
             🌟 ما هي منصة مسار؟
           </h1>
-          <p style={{ 
-            fontSize: '1.4rem', 
+          <p style={{
+            fontSize: '1.4rem',
             lineHeight: '1.8',
             color: '#475569',
             maxWidth: '800px',
             margin: '0 auto'
           }}>
             <strong>مسار</strong> هي بوابتك الذكية لعالم الفرص الوظيفية في الوطن العربي! 🚀
-            منصة متكاملة تجمع بين <strong>الذكاء الاصطناعي</strong> و<strong>الخبرة البشرية</strong> 
+            منصة متكاملة تجمع بين <strong>الذكاء الاصطناعي</strong> و<strong>الخبرة البشرية</strong>
             لوصولك لأحلامك المهنية.
           </p>
         </div>
@@ -154,8 +154,8 @@ function AboutMasar() {
           <h2 style={{ fontSize: '2rem', marginBottom: '1rem', color: '#1e293b' }}>
             مشروع تخرج مقدم بجودة عالمية
           </h2>
-          <p style={{ 
-            fontSize: '1.2rem', 
+          <p style={{
+            fontSize: '1.2rem',
             color: '#475569',
             fontStyle: 'italic',
             marginBottom: '2rem',
@@ -163,14 +163,14 @@ function AboutMasar() {
           }}>
             "مسار - ليس مجرد منصة، بل هو مسارك نحو النجاح المهني"
           </p>
-          
+
           <div style={{
             display: 'flex',
             justifyContent: 'center',
             gap: '1rem',
             flexWrap: 'wrap'
           }}>
-            <Link 
+            <Link
               to="/"
               style={{
                 display: 'inline-flex',
@@ -188,8 +188,8 @@ function AboutMasar() {
             >
               ابدأ رحلتك الآن <ArrowRight size={20} />
             </Link>
-            
-            <Link 
+
+            <Link
               to="/ats-checker"
               style={{
                 display: 'inline-flex',

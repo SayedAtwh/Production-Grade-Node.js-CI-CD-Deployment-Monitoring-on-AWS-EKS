@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Upload, FileText, TrendingUp, AlertCircle, CheckCircle, Lightbulb, Copy, Download } from 'lucide-react';
+import { Upload, FileText, AlertCircle, Lightbulb, Copy, Download } from 'lucide-react';
 import { useATS } from '../context/ATSContext';
 import '../styles/ATSChecker.css';
 
@@ -22,19 +22,6 @@ function ATSChecker() {
       }
     };
     reader.readAsText(file, 'utf-8');
-  };
-
-  const handleAnalyze = () => {
-    if (!cvText.trim()) {
-      analyzeCV('');
-      return;
-    }
-    analyzeCV(cvText);
-  };
-
-  const handleReset = () => {
-    setCvText('');
-    setFileName('');
   };
 
   const handleCopy = (text) => {
@@ -113,8 +100,8 @@ function ATSChecker() {
                 {/* تفاصيل النقاط */}
                 <div className="ats-details">
                   <h3>تفاصيل التقييم</h3>
-                  {atsResult.details.map((detail, idx) => (
-                    <div key={idx} className="detail-item">
+                  {atsResult.details.map((detail) => (
+                    <div key={detail.category} className="detail-item">
                       <div className="detail-header">
                         <span className="detail-category">{detail.category}</span>
                         <div className="detail-progress">
@@ -136,7 +123,7 @@ function ATSChecker() {
                       {detail.warnings && detail.warnings.length > 0 && (
                         <div className="warnings">
                           {detail.warnings.map((warning, widx) => (
-                            <div key={widx} className="warning-item">
+                            <div key={`warning-${detail.category}-${widx}`} className="warning-item">
                               <AlertCircle size={14} />
                               <span>{warning}</span>
                             </div>
@@ -148,7 +135,7 @@ function ATSChecker() {
                           <strong>كلمات مفتاحية مكتشفة ({detail.foundKeywords.length}):</strong>
                           <div className="tags">
                             {detail.foundKeywords.map((kw, kidx) => (
-                              <span key={kidx} className="tag">{kw}</span>
+                              <span key={`kw-${kw}`} className="tag">{kw}</span>
                             ))}
                           </div>
                           {detail.foundTechnical && detail.foundTechnical.length > 0 && (
@@ -156,7 +143,7 @@ function ATSChecker() {
                               <strong style={{ marginTop: '0.8rem', display: 'block' }}>مهارات تقنية ({detail.foundTechnical.length}):</strong>
                               <div className="tags">
                                 {detail.foundTechnical.map((tech, tidx) => (
-                                  <span key={tidx} className="tag" style={{ background: '#ddd6fe', color: '#6d28d9' }}>{tech}</span>
+                                  <span key={`tech-${tech}`} className="tag" style={{ background: '#ddd6fe', color: '#6d28d9' }}>{tech}</span>
                                 ))}
                               </div>
                             </>
@@ -168,7 +155,7 @@ function ATSChecker() {
                           <strong>طرق التواصل المكتشفة:</strong>
                           <div className="tags">
                             {detail.foundContact.map((contact, cidx) => (
-                              <span key={cidx} className="tag">{contact}</span>
+                              <span key={`contact-${contact}`} className="tag">{contact}</span>
                             ))}
                           </div>
                         </div>
@@ -205,7 +192,7 @@ function ATSChecker() {
                       التوصيات والاقتراحات
                     </h3>
                     {atsResult.recommendations.map((rec, idx) => (
-                      <div key={idx} className={`recommendation ${rec.priority.toLowerCase()}`}>
+                      <div key={`rec-${rec.priority}-${idx}`} className={`recommendation ${rec.priority.toLowerCase()}`}>
                         <div className="rec-icon">{rec.icon}</div>
                         <div className="rec-content">
                           <span className="rec-priority">{rec.priority}</span>

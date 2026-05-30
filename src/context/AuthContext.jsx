@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useEffect } from 'react';
+import React, { createContext, useState, useContext, useEffect, useMemo } from 'react';
 
 const AuthContext = createContext();
 
@@ -263,7 +263,7 @@ Verification Code: ${verificationToken}
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, register, logout, updateProfile, changePassword, isLoading, emailNotification, verifyEmail, setEmailNotification }}>
+    <AuthContext.Provider value={useMemo(() => ({ user, login, register, logout, updateProfile, changePassword, isLoading, emailNotification, verifyEmail, setEmailNotification }), [user, emailNotification, isLoading])}>
       {children}
     </AuthContext.Provider>
   );

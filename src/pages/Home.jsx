@@ -319,7 +319,7 @@ function Home({ selectedCountry, searchTerm, setSearchTerm, activeCategory, setA
 
                 {[...Array(totalPages)].map((_, i) => (
                   <button
-                    key={i}
+                    key={`page-${i + 1}`}
                     onClick={() => setCurrentPage(i + 1)}
                     style={{
                       width: '40px',
