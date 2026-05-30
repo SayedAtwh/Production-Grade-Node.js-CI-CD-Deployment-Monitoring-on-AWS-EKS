@@ -69,3 +69,6 @@ deploy_job:
     - kubectl config use-context "$KUBE_CONTEXT"
     - kubectl apply -f deployment.yaml
     - kubectl apply -f service.yaml
+    - kubectl apply -f stoarge_class.yaml
+    - kubectl apply -f pvc.yaml
+ 
