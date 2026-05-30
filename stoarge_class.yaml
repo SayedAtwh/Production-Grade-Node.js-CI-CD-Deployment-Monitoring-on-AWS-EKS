@@ -9,5 +9,5 @@ parameters:
   provisioningMode: efs-ap
   directoryPerms: "700"
   fileSystemId: fs-07d716208c19febdb
-reclaimPolicy: Retain
+reclaimPolicy: Retain 
 volumeBindingMode: Immediate
