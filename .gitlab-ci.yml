@@ -63,8 +63,6 @@ deploy_job:
   script:
     - sed -i "s|IMAGE_PLACEHOLDER|$IMAGE_NAME_GITLAB_REGISTRY|g" deployment.yaml
     - kubectl config use-context "$KUBE_CONTEXT"
-    - kubectl apply -f stoarge_class.yaml
-    - kubectl apply -f pvc.yaml
     - kubectl apply -f deployment.yaml
     - kubectl apply -f service.yaml
   only:
