@@ -35,10 +35,4 @@ spec:
             requests:
               memory: "256Mi"
               cpu: "250m"
-          volumeMounts:
-            - name: masar-app-storage
-              mountPath: /app/data
-      volumes:
-        - name: masar-app-storage
-          persistentVolumeClaim: 
-            claimName: efs-pvc-nodejs-app  
+      
