@@ -11,4 +11,4 @@ parameters:
   fileSystemId: fs-0f0b03df391b81e97
 
 reclaimPolicy: Retain 
-volumeBindingMode: Immediate  
+volumeBindingMode: Immediate 
